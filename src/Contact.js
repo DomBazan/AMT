@@ -1,34 +1,30 @@
 import React from 'react';
 import './About.css'; // Reuse the styling for consistency
+import amtLogo from './amt-logo.svg';
 
 function Contact({ language, navigateToHome, navigateToAbout, navigateToContact }) {
   const texts = {
     en: {
       title: 'Contact AMT Processing & Services',
-      commitment: 'Our commitment to your needs extends throughout the entire year. We\'re here to assist you with any questions related to the IRS, be it letters, audits, or reviews of previous taxes, including ITIN number applications.',
-      services: 'Moreover, our services go beyond taxes, we have Certified Translators and Notary Public on hand.',
-      phones: 'Telephones: 801-688-0657 | 801-486-3122 | 801-486-0065',
-      fax: 'Fax: 801-487-4293 | E-fax: 801-880-9915 | email: amttaxes@gmail.com',
-      address: '801-688-0657 (Text/WhatsApp Only)',
-      commitment2: 'We are committed to offering the best service ever!!',
+      phones: 'Office Phones: 801-486-3122',
+      cell: 'Cell Phone: 801-688-0657',
+      fax: 'Email: amttaxes@gmail.com',
+      text: 'Text/WhatsApp Only: 801-688-0657',
+      address: 'AMT Processing & Services 3269 S Main Street | Suite 275 | South Salt Lake | UT 84115',
       schedule: 'Please schedule your appointment online here!',
-      contact: 'Please contact us with your specific request, and we will prepare a free estimate.',
       calendly: 'CALENDLY 2025',
       contactTitle: 'Contact Us'
     },
     es: {
       title: 'Contactar AMT Processing & Services',
-      commitment: 'Nuestro compromiso con sus necesidades se extiende durante todo el año. Estamos aquí para ayudarle con cualquier pregunta relacionada con el IRS, ya sean cartas, auditorías o revisiones de impuestos anteriores, incluyendo aplicaciones para números ITIN.',
-      services: 'Además, nuestros servicios van más allá de los impuestos, contamos con Traductores Certificados y Notario Público a disposición.',
-      phones: 'Teléfonos: 801-688-0657 | 801-486-3122 | 801-486-0065',
-      fax: 'Fax: 801-487-4293 | E-fax: 801-880-9915 | email: amttaxes@gmail.com',
-      address: '801-688-0657 (Texto/WhatsApp Solo)',
-      commitment2: '¡Estamos comprometidos a ofrecer el mejor servicio de todos!',
+      phones: 'Teléfonos de Oficina: 801-486-3122',
+      cell: 'Teléfono Celular: 801-688-0657',
+      fax: 'Email: amttaxes@gmail.com',
+      text: 'Texto/WhatsApp Solo: 801-688-0657',
+      address: 'AMT Processing & Services 3269 S Main Street | Suite 275 | South Salt Lake | UT 84115',
       schedule: '¡Por favor programe su cita en línea aquí!',
-      contact: 'Por favor contáctenos con su solicitud específica, y le prepararemos una estimación gratuita.',
       calendly: 'CALENDLY 2025',
-      contactTitle: 'Contáctanos',
-      contactInfo: 'Información de Contacto'
+      contactTitle: 'Contáctanos'
     }
   };
   const t = texts[language] || texts.en;
@@ -42,19 +38,28 @@ function Contact({ language, navigateToHome, navigateToAbout, navigateToContact 
       </section>
       <div className="about-page-boxes">
         <div className="about-box">
-          <p>{t.commitment}</p>
-          <p>{t.services}</p>
-          <p>{t.commitment2}</p>
-        </div>
-        <div className="about-box">
-          <h3>{t.contactInfo}</h3>
           <p>{t.phones}</p>
+          <p>{t.cell}</p>
           <p>{t.fax}</p>
-          <p>{t.address}</p>
+          <p>{t.text}</p>
         </div>
         <div className="about-box">
-          <h3>{t.schedule}</h3>
-          <p>{t.contact}</p>
+          <p>{t.address}</p>
+          <div className="video-container" style={{ marginTop: '20px' }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1234567890123!2d-111.89104768459375!3d40.718123479328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f5b2c5b2c5b2%3A0x1234567890abcdef!2sAMT%20Processing%20%26%20Services!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+              width="100%"
+              height="300"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="AMT Processing & Services Location"
+            ></iframe>
+          </div>
+        </div>
+        <div className="about-box">
+          <p>{t.schedule}</p>
           <div style={{ textAlign: 'center' }}>
             <a href="https://calendly.com/amttaxes2025" target="_blank" rel="noopener noreferrer">
               <button className="cta-btn">{t.calendly}</button>
@@ -67,17 +72,10 @@ function Contact({ language, navigateToHome, navigateToAbout, navigateToContact 
   );
 }
 
-function Header({ language, navigateToHome }) {
-  const texts = {
-    en: { h1: 'AMT Processing & Services', p: 'Income Tax | Notary | Translation' },
-    es: { h1: 'AMT Processing & Services', p: 'Impuestos del IRS | Notario | Traducción' }
-  };
-  const t = texts[language] || texts.en;
-
+function Header({ language, toggleLanguage }) {
   return (
-    <header>
-      <h1 style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>{t.h1}</h1>
-      <p>{t.p}</p>
+    <header className="app-header">
+      <img src={amtLogo} alt="AMT Logo" className="header-logo" />
     </header>
   );
 }

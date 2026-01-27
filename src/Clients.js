@@ -1,5 +1,6 @@
 import React from 'react';
 import './About.css'; // Reuse the styling for consistency
+import amtLogo from './amt-logo.svg';
 
 function Clients({ language, toggleLanguage, navigateToHome, navigateToAbout, navigateToContact, navigateToClients }) {
   const texts = {
@@ -69,16 +70,9 @@ function Clients({ language, toggleLanguage, navigateToHome, navigateToAbout, na
 }
 
 function Header({ language, navigateToHome }) {
-  const texts = {
-    en: { h1: 'AMT Processing & TAX Services', p: 'Income Tax | Notary | Translation' },
-    es: { h1: 'AMT Processing & TAX Services', p: 'Impuestos del IRS | Notario | Traducción' }
-  };
-  const t = texts[language] || texts.en;
-
   return (
     <header>
-      <h1 style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>{t.h1}</h1>
-      <p>{t.p}</p>
+      <img src={amtLogo} alt="AMT Logo" style={{ height: '80px' }} />
     </header>
   );
 }

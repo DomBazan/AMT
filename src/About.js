@@ -1,17 +1,11 @@
 import React from 'react';
 import './About.css';
+import amtLogo from './amt-logo.svg';
 
 function Header({ language, toggleLanguage }) {
-  const texts = {
-    en: { h1: 'AMT Processing & Services', p: 'Income Tax | Notary | Translation' },
-    es: { h1: 'AMT Processing & Services', p: 'Impuestos del IRS | Notario | Traducción' }
-  };
-  const t = texts[language] || texts.en;
-
   return (
-    <header>
-      <h1 style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>{t.h1}</h1>
-      <p>{t.p}</p>
+    <header className="app-header">
+      <img src={amtLogo} alt="AMT Logo" className="header-logo" />
     </header>
   );
 }
@@ -64,29 +58,28 @@ function Footer({ language }) {
 function About({ language, toggleLanguage, navigateToHome, navigateToAbout, navigateToContact }) {
   const texts = {
     en: {
-      title: 'About AMT Processing & Services',
-      content: `Armex Business Services LLC, dba AMT Processing & Services, is a family-owned company founded in Salt Lake City, Utah in 2004. With two decades of dedicated service to the community, we take pride in our commitment to accuracy and excellence.
+      title: 'Our History ',
+      content: `Armex Business Services LLC doing business as AMT Processing & Services, is a family-owned company proudly serving the Salt Lake City community since 2004. For over twenty years, we’ve built lasting relationships based on trust, accuracy, and genuine care for our clients’ financial well-being.
 
-At AMT, rest assured that your taxes will be prepared with precision, reducing the risk of future audits. We offer multiple convenient and secure methods to ensure you receive your refund promptly.
+At AMT, we believe every tax return tells a story, and we treat yours with the attention it deserves. Our experienced, IRS-certified professionals handle each case with precision to help you stay compliant and minimize the risk of future audits. We also make sure your refund arrives quickly and securely, offering several convenient processing options.
 
-Our team of tax preparers consists of IRS-certified professionals dedicated to safeguarding your interests. With bilingual and trained staff, we are here to assist you in your preferred language. Furthermore, we provide a diverse range of products and services to cater to the needs of both you and your family.
+As a bilingual and multicultural team, we understand the importance of clear communication. Whether you prefer English or Spanish, we’re here to guide you step by step through every financial decision.
 
-We pride ourselves on delivering top-notch, personalized service to our valued clients. Your financial well-being is our priority, and we go the extra mile to ensure that you receive high-quality, tailored assistance for all your processing and tax needs.
-Interested in learning more about our services?`,
+
+Beyond tax preparation, we offer a wide range of financial, notary, and business services designed to support you and your family all year round. Our goal is simple: to provide personalized, high-quality assistance that helps you feel confident and cared for, because to us, you’re more than a client; you’re part of our AMT family.`,
       address: 'AMT Processing & Services ® 3269 S Main Street | Suite 275 | South Salt Lake | UT 84115',
       copyright: 'Website Designed by ARMEX Business Services',
       videoPlaceholder: 'Video Placeholder - Replace with actual video URL'
     },
     es: {
-      title: 'Acerca de AMT Processing & Services',
-      content: `Armex Business Services LLC, dba AMT Processing & Services, es una empresa familiar fundada en Salt Lake City, Utah en 2004. Con dos décadas de servicio dedicado a la comunidad, nos enorgullecemos de nuestro compromiso con la precisión y la excelencia.
+      title: 'Nuestra historia',
+      content: `Armex Business Services LLC, operando como AMT Processing & Services, es una empresa familiar que orgullosamente sirve a la comunidad de Salt Lake City desde 2004. Durante más de veinte años, hemos construido relaciones duraderas basadas en la confianza, la precisión y el genuino cuidado por el bienestar financiero de nuestros clientes.
 
-En AMT, esté seguro de que sus impuestos serán preparados con precisión, reduciendo el riesgo de auditorías futuras. Ofrecemos múltiples métodos convenientes y seguros para garantizar que reciba su reembolso de manera oportuna.
+En AMT, creemos que cada declaración de impuestos cuenta una historia, y tratamos la suya con la atención que merece. Nuestros profesionales experimentados y certificados por el IRS manejan cada caso con precisión para ayudarlo a mantenerse en cumplimiento y minimizar el riesgo de auditorías futuras. También nos aseguramos de que su reembolso llegue rápidamente y de manera segura, ofreciendo varias opciones convenientes de procesamiento.
 
-Nuestro equipo de preparadores de impuestos consta de profesionales certificados por el IRS dedicados a salvaguardar sus intereses. Con personal bilingüe y capacitado, estamos aquí para ayudarlo en su idioma preferido. Además, proporcionamos una amplia gama de productos y servicios para satisfacer las necesidades de usted y su familia.
+Como equipo bilingüe y multicultural, entendemos la importancia de la comunicación clara. Ya sea que prefiera inglés o español, estamos aquí para guiarlo paso a paso en cada decisión financiera.
 
-Nos enorgullecemos de brindar un servicio de primera clase y personalizado a nuestros valiosos clientes. Su bienestar financiero es nuestra prioridad, y vamos más allá para asegurarnos de que reciba asistencia de alta calidad y adaptada a todas sus necesidades de procesamiento e impuestos.
-¿Interesado en aprender más sobre nuestros servicios?`,
+Más allá de la preparación de impuestos, ofrecemos una amplia gama de servicios financieros, notariales y comerciales diseñados para apoyarlo a usted y a su familia durante todo el año. Nuestro objetivo es simple: proporcionar asistencia personalizada y de alta calidad que lo ayude a sentirse confiado y cuidado, porque para nosotros, usted es más que un cliente; es parte de nuestra familia AMT.`,
       address: 'AMT Processing & Services ® 3269 S Main Street | Suite 275 | South Salt Lake | UT 84115',
       copyright: 'Sitio Web Diseñado por ARMEX Business Services',
       videoPlaceholder: 'Marcador de posición de video - Reemplazar con URL de video real'
@@ -102,11 +95,9 @@ Nos enorgullecemos de brindar un servicio de primera clase y personalizado a nue
         <h2>{t.title}</h2>
       </section>
       <div className="about-page-boxes">
-        {t.content.split('\n\n').map((paragraph, index) => (
-          <div key={index} className="about-box">
-            <p>{paragraph}</p>
-          </div>
-        ))}
+        <div className="about-box">
+          <p dangerouslySetInnerHTML={{ __html: t.content.replace(/\n\n/g, '<br /><br />') }}></p>
+        </div>
         <div className="about-box">
           <div className="video-container">
             <iframe
