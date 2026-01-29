@@ -72,6 +72,7 @@ function App() {
       <Hero language={language} navigateToContact={navigateToContact} />
       <Services language={language} />
       <Mission language={language} />
+      <Footer language={language} />
     </div>
   );
 }
